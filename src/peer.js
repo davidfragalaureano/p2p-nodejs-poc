@@ -12,6 +12,7 @@ swarm.on('connection', (socket, peerId) => {
     socket.on('data', data => {
         console.log(data.toString().trim());
     })
+    broadcast();
 })
 
 process.stdin.on('data', data => {
@@ -20,3 +21,16 @@ process.stdin.on('data', data => {
     })
 });
 
+async function broadcast(){
+    // eslint-disable-next-line no-constant-condition
+    while(true) { 
+        await sleep(10000);
+        Object.values(friends).forEach(friend => {
+            friend.write(`[ ${me} ] : is Active and connected.`);
+        })
+    }
+}
+
+async function sleep(ms) {
+   return await new Promise(resolve => setTimeout(resolve, ms));
+}

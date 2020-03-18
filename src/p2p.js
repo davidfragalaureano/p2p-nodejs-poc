@@ -14,7 +14,7 @@ class P2P extends EventEmitter {
         this.peers = {};
         this.server = null;
 
-        const [, port ] = me.split(':');
+        const [ ,port ] = me.split(':');
         
         if (this.me) this.listen(Number(port));
 

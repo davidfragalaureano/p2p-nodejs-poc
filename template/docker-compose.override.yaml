@@ -1,0 +1,5 @@
+# Override the image to the default node image
+version: "3.5"
+services:  
+    node:
+      image: node-peer:latest
